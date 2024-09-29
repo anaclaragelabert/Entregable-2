@@ -10,6 +10,9 @@ public class EmpaquetadoPedidos {
 
     // Método para agregar un pedido a la lista de espera
     public void agregarPedido(Pedido pedido) {
+        if (pedido.getEstado() != EstadoPedido.PAGO_VERIFICADO) {
+                throw new IllegalStateException("El pedido no está pago. No se puede empaqurtar.");
+            }
         pedidosEnEspera.add(pedido);
     }
 
