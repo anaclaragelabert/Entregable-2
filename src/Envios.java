@@ -19,11 +19,19 @@ public class Envios implements Runnable {
                 // Simular el envío
                 Thread.sleep(1000);
                 pedido.setEstado(EstadoPedido.ENVIADO);
-                System.out.println("Pedido enviado: " + pedido.getId());
+                
+                // Otras acciones, como generar un número de seguimiento o notificar al cliente
+                String trackingNumber = generarNumeroSeguimiento();
+                System.out.println("Pedido " + pedido.getId() + " enviado con número de seguimiento: " + trackingNumber);
+
             }
         } catch (InterruptedException e) {
             System.err.println("Error en el envío: " + e.getMessage());
         }
+    }
+    // Método simulado para generar un número de seguimiento
+    private String generarNumeroSeguimiento() {
+        return "TRACK" + (int)(Math.random() * 10000);
     }
 }
 
